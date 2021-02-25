@@ -1,0 +1,27 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+  <img style="width: 100%;" src="{% static 'images/deals.png' %}">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-lg-4">
+      <img class="thumbnail" src="{{product.imageURL}}" alt="placeholder image">
+      <div class="box-element product">
+
+        <h4 style="display: inline-block; float: left; color:red" ><strong>
+           &#8364 {{product.price|floatformat:2}}</strong></h4>
+          <br>
+          <br>
+        <h6 style="color:blue; font-size:25px; margin-left: 10px; font-family: Arial;">
+          <strong>{{product.name}}</strong></h6>
+        <hr>
+        <button style="width: 100%; border-radius:8px;" data-product={{product.id}} data-action="add" class="btn
+        btn-success">Add to Cart</button>
+        <a style="width: 100%; border-radius:8px; margin-top:5px;" class="btn btn-secondary" href="#">View</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
